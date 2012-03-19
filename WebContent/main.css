@@ -334,3 +334,67 @@ html, body, #map {
 	background-color:#F4F4F4;
 	color:#FF0000;
 }
+
+
+
+
+
+
+
+
+
+.marker-input
+{
+	border:1px solid #D4D4D4;
+	padding:4px;
+	margin-bottom:10px;
+}
+.marker-input-tools
+{
+	position:absolute;
+	right:10px;
+	height:26px;
+	margin:-4px;
+	border-left:1px solid #D4D4D4;
+	background-color:#CCEEFF;
+	width:50%;
+	float:right;
+	display:none;
+	text-align:right;
+	padding:4px;
+	font-size:11px;
+}
+.marker-input-tools2
+{
+	position:absolute;
+	right:11px;
+	height:12px;
+	margin:3px;
+	border-left:1px solid #D4D4D4;
+	background-color:#CCEEFF;
+	width:50%;
+	float:right;
+	display:none;
+	text-align:right;
+	padding:4px;
+	font-size:11px;
+}
+.marker-input-text
+{
+	width:345px;
+	vertical-align:middle;	
+}
+.marker-input-image
+{
+	vertical-align:middle;
+}
+
+.marker-input:hover .marker-input-tools
+{
+	display:block;
+}
+
+.marker-input-text:active .marker-input-tools
+{
+	display:none;
+}
