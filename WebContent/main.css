@@ -345,24 +345,41 @@ html, body, #map {
 
 .marker-input
 {
-	border:1px solid #D4D4D4;
+	position: relative;
+	border:1px solid #FFFFFF;
 	padding:4px;
 	margin-bottom:10px;
 }
+.marker-input:hover
+{
+	/*border:1px solid #999999;
+	background-color:#F4F4F4;*/
+}
+
 .marker-input-tools
 {
 	position:absolute;
-	right:10px;
-	height:26px;
-	margin:-4px;
+	right:0px;
+	top:0px;
+	height:100%;
+	width:50%;
 	border-left:1px solid #D4D4D4;
 	background-color:#CCEEFF;
-	width:50%;
-	float:right;
 	display:none;
+}
+.marker-input-tools-outer
+{
+	display:table;
+	height:100%;
+	width:100%;
+}
+.marker-input-tools-middle
+{
+	display:table-cell;
+	vertical-align:middle;
 	text-align:right;
-	padding:4px;
 	font-size:11px;
+	padding-right:4px;
 }
 .marker-input-tools2
 {
@@ -387,14 +404,4 @@ html, body, #map {
 .marker-input-image
 {
 	vertical-align:middle;
-}
-
-.marker-input:hover .marker-input-tools
-{
-	display:block;
-}
-
-.marker-input-text:active .marker-input-tools
-{
-	display:none;
 }
