@@ -41,6 +41,12 @@ function removeClass(ele,cls) {
 		ele.className=ele.className.replace(reg,' ');
 	}
 }
+function contains(a,b) {
+	if ( document.documentElement.contains )
+		return a !== b && (a.contains ? a.contains(b) : true);
+	else 
+		return !!(b.compareDocumentPosition(a) & 16);
+}
 
 // ------------------------------------------------------
 

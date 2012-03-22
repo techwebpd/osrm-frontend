@@ -336,13 +336,7 @@ html, body, #map {
 }
 
 
-
-
-
-
-
-
-
+/* location input area */
 .marker-input
 {
 	position: relative;
@@ -360,7 +354,6 @@ html, body, #map {
 	border:1px solid #999999;
 	background-color:#E4E4E4;
 }
-
 .marker-input-tools
 {
 	position:absolute;
@@ -385,21 +378,6 @@ html, body, #map {
 	text-align:right;
 	font-size:11px;
 	padding-right:4px;
-}
-.marker-input-tools2
-{
-	position:absolute;
-	right:11px;
-	height:12px;
-	margin:3px;
-	border-left:1px solid #D4D4D4;
-	background-color:#CCEEFF;
-	width:50%;
-	float:right;
-	display:none;
-	text-align:right;
-	padding:4px;
-	font-size:11px;
 }
 .marker-input-text
 {

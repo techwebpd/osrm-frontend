@@ -14,7 +14,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 or see http://www.gnu.org/licenses/agpl.txt.
 */
-a=0;
+
 // OSRM initialization
 // [initialization of maps, local strings, image prefetching]
 
@@ -32,7 +32,7 @@ function init() {
 	initRouting();
 
  	// check if the URL contains some GET parameter, e.g. for the route
- 	checkURL();	
+ 	checkURL();
 }
 
 
@@ -92,12 +92,12 @@ function initLocale() {
 
 
 // centering on geolocation
-function callbak_centerOnGeolocation( position ) {
+function callback_centerOnGeolocation( position ) {
 	OSRM.G.map.setView( new L.LatLng( position.coords.latitude, position.coords.longitude), OSRM.DEFAULTS.ZOOM_LEVEL);
 }
 function centerOnGeolocation() {
 	if (navigator.geolocation)
-		navigator.geolocation.getCurrentPosition( callbak_centerOnGeolocation );
+		navigator.geolocation.getCurrentPosition( callback_centerOnGeolocation );
 }
 
 

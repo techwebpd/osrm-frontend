@@ -85,44 +85,82 @@ or see http://www.gnu.org/licenses/agpl.txt.
 	<img id="osrm-logo" alt="OSRM Logo" src="images/osrm-logo.png" />
 
 	<!-- source/target input -->
-	
-	<div id="marker-input-1" class="marker-input" onmouseover="addClass(this, 'marker-input-hover'); document.getElementById('marker-input-tools-1').style.display='block';" onmouseout="removeClass(this,'marker-input-hover'); document.getElementById('marker-input-tools-1').style.display='none';">
+
+	<div id="marker-input-1" class="marker-input" 
+	onmouseover="
+				if(!event.relatedTarget || ( event.relatedTarget !== event.currentTarget && !contains(event.relatedTarget, event.currentTarget) ))  
+				{	
+					addClass(this, 'marker-input-hover');
+					document.getElementById('marker-input-tools-1').style.display='block';
+				}" 
+	onmouseout="  
+				if(!event.relatedTarget || ( event.relatedTarget !== event.currentTarget &&  !contains(event.relatedTarget, event.currentTarget) )) 
+				{	
+					removeClass(this,'marker-input-hover'); 
+					document.getElementById('marker-input-tools-1').style.display='none'; 
+				}">	
 	<div id="marker-input-tools-1" class="marker-input-tools">
 	<div class="marker-input-tools-outer">
 	<div class="marker-input-tools-middle">
 	<img style="position:absolute;left:-10px;top:0px;height:100%" src="images/input-arrow.png" alt=""/>
-	Start <a class="button not-selectable">Show</a> <a class="button not-selectable">Here</a> <a class="button not-selectable">Remove</a>
+	Start 
+	<a class="button not-selectable" onclick="showMarker('source')">Show</a>
+	<a class="button not-selectable" onclick="navigator.geolocation.getCurrentPosition( function(position) {document.getElementById('input-source-name').value = position.coords.latitude+', '+position.coords.longitude; inputChanged(OSRM.C.SOURCE_LABEL);} );">Here</a>
+	<a class="button not-selectable" onclick="if(OSRM.G.markers.hasSource()) {OSRM.G.markers.removeMarker(0); getRoute(OSRM.C.FULL_DESCRIPTION); OSRM.G.markers.highlight.hide();}">Remove</a>
 	</div>
 	</div>
 	</div>	
 	<img class="marker-input-image" src="images/input-source.png" alt=""/>
-	<input id="marker-input-text-1" class="marker-input-text" type="text" maxlength="200" value="" onclick="document.getElementById('marker-input-tools-1').style.display='none';" onfocus="addClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');" onblur="removeClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');"/>
+	<input id="input-source-name" class="marker-input-text" type="text" maxlength="200" value="" 
+	onclick="document.getElementById('marker-input-tools-1').style.display='none';"
+	onfocus="addClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');"
+	onblur="removeClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');"
+	onchange="inputChanged(OSRM.C.SOURCE_LABEL);"
+	/>
 	</div>
 	
-	<div id="marker-input-2" class="marker-input" onmouseover="addClass(this, 'marker-input-hover'); document.getElementById('marker-input-tools-2').style.display='block';" onmouseout="removeClass(this,'marker-input-hover'); document.getElementById('marker-input-tools-2').style.display='none';">
+	<div id="marker-input-2" class="marker-input"
+	onmouseover="
+				if(!event.relatedTarget || ( event.relatedTarget !== event.currentTarget && !contains(event.relatedTarget, event.currentTarget) ))  
+				{	
+					addClass(this, 'marker-input-hover');
+					document.getElementById('marker-input-tools-2').style.display='block';
+				}" 
+	onmouseout="  
+				if(!event.relatedTarget || ( event.relatedTarget !== event.currentTarget &&  !contains(event.relatedTarget, event.currentTarget) )) 
+				{	
+					removeClass(this,'marker-input-hover'); 
+					document.getElementById('marker-input-tools-2').style.display='none'; 
+				}">	
 	<div id="marker-input-tools-2" class="marker-input-tools">
 	<div class="marker-input-tools-outer">
 	<div class="marker-input-tools-middle">
 	<img style="position:absolute;left:-10px;top:0px;height:100%" src="images/input-arrow.png" alt=""/>
-	End <a class="button not-selectable">Show</a> <a class="button not-selectable">Here</a> <a class="button not-selectable">Remove</a>
+	End
+	<a class="button not-selectable" onclick="showMarker('target')">Show</a>
+	<a class="button not-selectable" onclick="navigator.geolocation.getCurrentPosition( function(position) {document.getElementById('input-target-name').value = position.coords.latitude+', '+position.coords.longitude; inputChanged(OSRM.C.TARGET_LABEL);} );">Here</a>
+	<a class="button not-selectable" onclick="if(OSRM.G.markers.hasTarget()) {OSRM.G.markers.removeMarker(OSRM.G.markers.route.length-1);	getRoute(OSRM.C.FULL_DESCRIPTION); OSRM.G.markers.highlight.hide();}">Remove</a>	
 	</div>
 	</div>
 	</div>	
 	<img class="marker-input-image" src="images/input-target.png" alt=""/>
-	<input id="marker-input-text-2" class="marker-input-text" type="text" maxlength="200" value="" onclick="document.getElementById('marker-input-tools-2').style.display='none';" onfocus="addClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');" onblur="removeClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');"/>
+	<input id="input-target-name" class="marker-input-text" type="text" maxlength="200" value="" 
+	onclick="document.getElementById('marker-input-tools-2').style.display='none';" 
+	onfocus="addClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');" 
+	onblur="removeClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');"
+	onchange="inputChanged(OSRM.C.TARGET_LABEL);" />
 	</div>	
-	
 	
     <table class="full">
     <tr>
     <td id="gui-search-source-label">Start:</td>
-    <td><input id="input-source-name" class="input-box" type="text" maxlength="200" value="" title="Startposition eingeben" onchange="inputChanged(OSRM.C.SOURCE_LABEL);" /></td>
+    <td><input id="xinput-source-name" class="input-box" type="text" maxlength="200" value="" title="Startposition eingeben" onchange="inputChanged(OSRM.C.SOURCE_LABEL);" /></td>
     <td class="right"><a class="button not-selectable" id="gui-search-source" onclick="showMarker('source')">Zeigen</a></td>
     </tr>
     
     <tr>
     <td id="gui-search-target-label">Ende:</td>
-    <td><input id="input-target-name" class="input-box" type="text" maxlength="200" value="" title="Zielposition eingeben" onchange="inputChanged(OSRM.C.TARGET_LABEL);" /></td>
+    <td><input id="xinput-target-name" class="input-box" type="text" maxlength="200" value="" title="Zielposition eingeben" onchange="inputChanged(OSRM.C.TARGET_LABEL);" /></td>
 	<td class="right"><a class="button not-selectable" id="gui-search-target" onclick="showMarker('target');">Zeigen</a></td>	
     </tr>
     </table>
