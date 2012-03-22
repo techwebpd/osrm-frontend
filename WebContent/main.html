@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <!--
 This program is free software; you can redistribute it and/or modify
@@ -17,7 +17,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 or see http://www.gnu.org/licenses/agpl.txt.
 -->
 
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 
 <!-- head -->
@@ -86,25 +86,30 @@ or see http://www.gnu.org/licenses/agpl.txt.
 
 	<!-- source/target input -->
 	
-	<div id="marker-input-1" class="marker-input" onmouseover="this.hovering=true;this.style.cssText='border:1px solid #999999;background-color:#F4F4F4;';document.getElementById('marker-input-tools-1').style.display='block';" onmouseout="this.hovering=false; if(document.activeElement!=document.getElementById('marker-input-text-1')) this.style.cssText='border:1px solid #FFFFFF;background-color:#FFFFFF;';document.getElementById('marker-input-tools-1').style.display='none';">
+	<div id="marker-input-1" class="marker-input" onmouseover="addClass(this, 'marker-input-hover'); document.getElementById('marker-input-tools-1').style.display='block';" onmouseout="removeClass(this,'marker-input-hover'); document.getElementById('marker-input-tools-1').style.display='none';">
 	<div id="marker-input-tools-1" class="marker-input-tools">
 	<div class="marker-input-tools-outer">
 	<div class="marker-input-tools-middle">
-	<img style="position:absolute;left:-10px;top:0px;height:100%" src="images/input-arrow.png" />
+	<img style="position:absolute;left:-10px;top:0px;height:100%" src="images/input-arrow.png" alt=""/>
 	Start <a class="button not-selectable">Show</a> <a class="button not-selectable">Here</a> <a class="button not-selectable">Remove</a>
 	</div>
 	</div>
 	</div>	
-	<img class="marker-input-image" src="images/input-source.png" />
-	<input id="marker-input-text-1" class="marker-input-text" type="text" maxlength="200" value="" onclick="document.getElementById('marker-input-tools-1').style.display='none';" onfocus="document.getElementById('marker-input-1').style.cssText='border:1px solid #999999;background-color:#F4F4F4;';" onblur="if(document.getElementById('marker-input-1').hovering==false) document.getElementById('marker-input-1').style.cssText='border:1px solid #FFFFFF;background-color:#FFFFFF;'"/>
+	<img class="marker-input-image" src="images/input-source.png" alt=""/>
+	<input id="marker-input-text-1" class="marker-input-text" type="text" maxlength="200" value="" onclick="document.getElementById('marker-input-tools-1').style.display='none';" onfocus="addClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');" onblur="removeClass(document.getElementById('marker-input-1'), 'marker-input-text-hover');"/>
 	</div>
 	
-	<div class="marker-input" onmouseover="document.getElementById('marker-input-tools-2').style.display='block';" onmouseout="document.getElementById('marker-input-tools-2').style.display='none';">
-	<div id="marker-input-tools-2" class="marker-input-tools2">
-	End <a class="button not-selectable">X</a> <a class="button not-selectable">Y</a> <a class="button not-selectable">Z</a>
+	<div id="marker-input-2" class="marker-input" onmouseover="addClass(this, 'marker-input-hover'); document.getElementById('marker-input-tools-2').style.display='block';" onmouseout="removeClass(this,'marker-input-hover'); document.getElementById('marker-input-tools-2').style.display='none';">
+	<div id="marker-input-tools-2" class="marker-input-tools">
+	<div class="marker-input-tools-outer">
+	<div class="marker-input-tools-middle">
+	<img style="position:absolute;left:-10px;top:0px;height:100%" src="images/input-arrow.png" alt=""/>
+	End <a class="button not-selectable">Show</a> <a class="button not-selectable">Here</a> <a class="button not-selectable">Remove</a>
+	</div>
+	</div>
 	</div>	
-	<img class="marker-input-image" src="images/input-target.png" />
-	<input class="marker-input-text" type="text" maxlength="200" value="" onfocus="document.getElementById('marker-input-tools-2').style.display='none';"/>
+	<img class="marker-input-image" src="images/input-target.png" alt=""/>
+	<input id="marker-input-text-2" class="marker-input-text" type="text" maxlength="200" value="" onclick="document.getElementById('marker-input-tools-2').style.display='none';" onfocus="addClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');" onblur="removeClass(document.getElementById('marker-input-2'), 'marker-input-text-hover');"/>
 	</div>	
 	
 	

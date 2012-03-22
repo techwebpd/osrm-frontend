@@ -350,10 +350,15 @@ html, body, #map {
 	padding:4px;
 	margin-bottom:10px;
 }
-.marker-input:hover
+.marker-input-hover
 {
-	/*border:1px solid #999999;
-	background-color:#F4F4F4;*/
+	border:1px solid #999999;
+	background-color:#F4F4F4;
+}
+.marker-input-text-hover
+{
+	border:1px solid #999999;
+	background-color:#E4E4E4;
 }
 
 .marker-input-tools
