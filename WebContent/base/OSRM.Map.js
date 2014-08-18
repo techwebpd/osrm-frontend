@@ -87,6 +87,9 @@ init: function() {
 	OSRM.G.map.scaleControl.options.imperial = (OSRM.G.DISTANCE_FORMAT == 1);	
 	OSRM.G.map.scaleControl.addTo(OSRM.G.map);
 	
+	// add dynamic URLs
+	new L.Hash(OSRM.G.map);
+	
 	// map events
 	OSRM.G.map.on('zoomend', OSRM.Map.zoomed );
 	OSRM.G.map.on('click', OSRM.Map.click );
